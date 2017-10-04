@@ -25,3 +25,28 @@ factorial n = n * factorial (n-1)  -- first recursive definition
 
 -- if we want to calculate factorial(2) it goes like ==> 2 * factorial(1) ==> 2 * 1 * factorial (0) //base case exceuted here
 -- had we not written the base case above the CATCH-ALL-IN-ONE case it would be a non-terminating expression
+
+-- extracting the 3rd element from a triple using pattern matching
+
+addvectors :: (Double,Double) -> (Double,Double) -> (Double,Double)
+addvectors a b = (fst a + fst b, snd a + snd b)   -- without pattern matching
+
+
+vectoradd :: (Double, Double) -> (Double, Double) -> (Double, Double)
+vectoradd (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+--addvector (x1,y1) (x2,y2) = (x1 + x2, y1 + y2)  -- with pattern specifying structure of teh conforming data
+
+
+fst' :: (a,b,c) -> a
+fst' (a,_,_) = a
+snd' (_,b,_) = b
+trd' (_,_,c) = c
+
+
+-- Pattern matching on list comprehensions
+
+-- new head function
+
+head1 :: [a] -> a
+head1 [] = "Cant call on empty list"
+head1 (x:_) = x  -- in order for proper parsing the () has to be done
