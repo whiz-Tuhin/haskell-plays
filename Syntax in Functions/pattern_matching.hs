@@ -59,8 +59,13 @@ tell :: (Show a) => [a] -> String
 tell [] = "This list is empty"
 tell (x:[]) = "This list contains one element" ++ show x
 tell (x:y:[]) = "This list contains 2 elements" ++  show x ++ show y
-tell (x:y:xs) = "This list is is long with first 2 elements as " ++ show x ++ show y ++ "and rest list appended as " ++ show xås
+--tell (x:y:xs) = "This list is is long with first 2 elements as " ++ show x ++ show y ++ "and rest list appended as " ++ show xs
+-- The last case can also be written in another format in which the input is preserved and can be used later on even though we have broken the
+-- input list using pattern matching
 
+
+-- HERE THE @ is known as the As-patterns which can be used to preserve the supplied input
+tell mylist@(x:y:xs) = "This list is is long with first 2 elements as " ++ show x ++ show y ++ "and rest list appended as " ++ show xs ++ "With the original list as " ++ show mylist
 
 {-
   Guards in haskell -- these are the substutute for a very big if-else construct in the imperative languages
