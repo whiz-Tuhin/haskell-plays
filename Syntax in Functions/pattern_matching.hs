@@ -48,5 +48,28 @@ trd' (_,_,c) = c
 -- new head function
 
 head1 :: [a] -> a
-head1 [] = "Cant call on empty list"
+head1 [] = error "Cant call on empty list"   -- here the "error" takes a string and generates a run-time error in case of haskell
+                                             -- otherwise the error is displayed while compile time that a is a rigit typec
 head1 (x:_) = x  -- in order for proper parsing the () has to be done
+
+
+-- Pattern matching in list comprehensions
+-- creating  a tell function in order to tell now many elements are there in a list supplied as an input
+tell :: (Show a) => [a] -> String
+tell [] = "This list is empty"
+tell (x:[]) = "This list contains one element" ++ show x
+tell (x:y:[]) = "This list contains 2 elements" ++  show x ++ show y
+tell (x:y:xs) = "This list is is long with first 2 elements as " ++ show x ++ show y ++ "and rest list appended as " ++ show xås
+
+
+{-
+  Guards in haskell -- these are the substutute for a very big if-else construct in the imperative languages
+  denoted by ( | ) , intuitively thses are the way in which a person can write that what all cases can the function cover when passed
+  with an input upon the call of a function
+-}
+
+calculateBMI :: (RealFloat a) => a -> String
+calculateBMI bmi
+        | bmi <= 18.5 = "You are normal"
+        | bmi <= 24.5 = "You are normal"
+        | otherwise = "Congrats! you are a hippo!"
