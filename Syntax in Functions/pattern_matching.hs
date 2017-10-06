@@ -78,3 +78,28 @@ calculateBMI bmi
         | bmi <= 18.5 = "You are normal"
         | bmi <= 24.5 = "You are normal"
         | otherwise = "Congrats! you are a hippo!"
+
+
+calculateBMI2 :: Double -> Double -> String
+calculateBMI2 w h
+        | w / h^2 <= 18.5 = "You are normal"
+        | w / h^2 <= 24.5 = "Hey fatty!"
+        | otherwise = "Hey whale!!"
+
+-- lets write max function
+
+max' :: (Ord a) => a -> a -> a   -- here in this case Num class constraint would not work mainly because in the Num typeclasss the GT, LT, EQ are not implemenentd
+max' a b | a >= b = a | otherwise = b
+
+-- writing a compare function
+
+mycompare :: (Ord a) => a -> a -> String
+-- mycompare a b
+--       | a == b = "EQ"
+--       | a < b = "LT"
+--       | otherwise = "GT"
+
+a `mycompare` b           -- backticks `bla bla ` are mainly use to define the function in an infix manner
+      | a == b = "EQ"     -- while calling the function we can call it in an infix manner
+      | a < b = "LT"
+      | otherwise = "GT"
