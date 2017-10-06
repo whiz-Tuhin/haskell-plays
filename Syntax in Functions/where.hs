@@ -20,6 +20,7 @@ calculateBMI2 w h
         | bmi <= fatso  = "Hey fatso!"
         | bmi <= hippo = "Hey hippo!"
         | otherwise = "Hey whale"
+        
         where bmi  = w / h^2
               thinny = 18.5
               fatso = 24.5
