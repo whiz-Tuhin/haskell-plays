@@ -20,8 +20,38 @@ calculateBMI2 w h
         | bmi <= fatso  = "Hey fatso!"
         | bmi <= hippo = "Hey hippo!"
         | otherwise = "Hey whale"
-        
         where bmi  = w / h^2
               thinny = 18.5
               fatso = 24.5
               hippo = 30.0
+
+-- where construct can also be used for pattern matching schemes
+-- the alternate version for the calculateBMI2 can also be wriiten as
+calculateBMI2 w h
+        | bmi <= thinny = "Hey thinny!"
+        | bmi <= fatso  = "Hey fatso!"
+        | bmi <= hippo = "Hey hippo!"
+        | otherwise = "Hey whale"
+        where bmi  = w / h^2
+              (thinny, fatso, hippo) = (18.5, 24.5, 30.0) -- tuple type matching scheme in thw where construct
+
+
+
+{-
+    PATTERN MATCHING USING WHERE CONSTRUCT IN HASKELL
+
+    the where construct can be easily hooked up with pattern matching in haskell
+    we can assign the required pattern variables using where
+-}
+
+getInitials :: String -> String -> String
+getInitials firstname lastname = [f] ++ "." ++ [l]
+        where (f:_) = firstname
+              (l:_) = lastname
+
+
+-- defining functions in where clause
+
+listbmi :: [(Double,Double)] -> [Double]
+listbmi hw = [bmi h w | (h,w) <- hw]    -- a list comprehensions for the generation of bmi list
+      where bmi h w = w / h^2
