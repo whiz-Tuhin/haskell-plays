@@ -33,11 +33,23 @@ calculateBMI xs = [bmi | (w,h) <- xs, let bmi = w / h^2]  -- defining a function
 
       CASE EXPRESSIONS
 
+      case <expression> of <pattern> -> result
+                           <pattern> -> result
+                           <pattern> -> result
+
+
       The patter specific function declaration in haskell is a syntactic sugar for the case expressions
+      The case expressions can be thought of as a replacement for the switch case construct in C/C++ or other imperative languages
 
 -}
 
-describelist :: (Show a) => [a] -> String
+describelist :: [a] -> String
 describelist xs = "The list is" ++ " " ++ case xs of [] -> "List is empty"
                                                      [x] -> "singleton"
                                                      ys -> "Long list"
+
+-- cases can be used anywhere even in short expressions
+
+getHead :: [a] -> a
+getHead xs = case xs of [] -> error "Cant get for empty lists"
+                        (x:_) -> x
