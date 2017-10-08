@@ -19,3 +19,15 @@ maximum' :: (Ord a) => [a] -> a
 maximum' xs = case xs of [] -> error "Empty list error"
                          [x] -> x
                          (y:ys) -> max y (maximum' ys)
+
+
+replicate' :: Int -> a -> [a]
+replicate' n var
+      | n == 0 = []
+      | otherwise = var : replicate' (n-1) var   -- it foes
+
+take' :: Int -> [a] -> [a]
+take' n _
+    | n <= 0 = []
+take' _ [] = []
+take' n (x:xs) = x : take' (n-1) xs
