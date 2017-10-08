@@ -26,8 +26,29 @@ replicate' n var
       | n == 0 = []
       | otherwise = var : replicate' (n-1) var   -- it foes
 
+
+
 take' :: Int -> [a] -> [a]
 take' n _
     | n <= 0 = []
 take' _ [] = []
 take' n (x:xs) = x : take' (n-1) xs
+
+
+repeat' :: a -> [a]
+repeat' = a : repeat' a
+
+
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
+
+
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs)
+      | a == x = True
+      | otherwise = a `elem'` xs
