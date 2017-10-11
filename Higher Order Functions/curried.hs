@@ -17,3 +17,9 @@ max' a b
 -- these are the examples of the curried functions
 
 -- Higher order functions
+
+multiplythree :: (Num a) => a -> (a -> (a -> a))
+multiplythree x y z  = x*y*z
+
+multiplebynine =  multiplythree 2
+val = multiplebynine 3 4
