@@ -33,7 +33,23 @@ comparewith100 x = compare 100 x -- this is not a curried version of the functio
 -- a curried version would look somewhat like
 
 comparewith100curried :: (Num a, Ord a) => a -> Ordering
-comparewith100curried = compare 100 
+comparewith100curried = compare 100
 
 -- in the above case the compare function has a type of (Num a, Ord a) => a -> (a -> Ordering)
 -- by passing only a single parameter we have a return of the type  (Num a, Ord a) => (a -> Ordering)
+
+
+--infix functions can also be made partial by surrounding them with parantheses  -- usage of sections
+mydivide :: (Floating a) => (a -> a)
+mydivide = (/10)
+
+
+subtract4 :: (Num a) => a -> a
+subtract4 = (subtract 4)
+
+
+-- Use of sections in order to understand the curried function properly for infix functions
+justanother :: (Floating a) => a -> (a -> a)
+justanother x = (/x)
+
+myvalue = justanother 10
